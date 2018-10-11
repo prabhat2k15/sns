@@ -2,24 +2,26 @@
 namespace Model;
 
 use PDO;
+use Logger;
+use Dotenv\Dotenv;
 
 class Database {
 
     public $hostname, $dbname, $username, $password, $conn;
 
     function __construct() {
-        $this->host_name = $_ENV['DB']['HOST'];;//"internal-myop-internal-galera-1243103973.ap-south-1.elb.amazonaws.com";
-        $this->dbname = $_ENV['DB']['NAME'];
-        $this->username = $_ENV['DB']['USER'];
-        $this->password = $_ENV['DB']['PASSWORD'];
+        $this->host_name = getenv('DB_HOST');//"internal-myop-internal-galera-1243103973.ap-south-1.elb.amazonaws.com";
+        $this->dbname = getenv('DB_NAME');
+        $this->username = getenv('DB_USER');
+        $this->password = getenv('DB_PASSWORD');
         try {
-
             $this->conn = new PDO("mysql:host=$this->host_name;dbname=$this->dbname", $this->username, $this->password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	        $this->conn->setAttribute( PDO::ATTR_PERSISTENT, true );
             $this->conn->exec("use ".$this->dbname.";");//"use myoperator;");//????????????
-        } catch (PDOException $e) {
-            echo 'Error: ' . $e->getMessage();
+        } catch (\PDOException $e) {
+            $this->log->warn('!!!!!! PDO EXCEPTION !!!!!!!'.$e->getMessage());
+            exit;
         }
     }
 

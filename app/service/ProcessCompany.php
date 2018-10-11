@@ -6,6 +6,7 @@ date_default_timezone_set('UTC');
 
 use Logger;
 use Model\Query;
+use Dotenv\Dotenv;
 
 class ProcessCompany 
 {
@@ -17,12 +18,19 @@ class ProcessCompany
     public $log;
 
     public function __construct()
-    {
-        $this->query = new Query;
+    {   
         Logger::configure(__DIR__.'/../../logconf.php');
         $this->log = Logger::getLogger('company');
-
+        $validation = new Validation;
+        $status = $validation->validateConfig();
+        if(!$status['status']){
+            echo json_encode($status);
+            exit;
+        }
+        
+        $this->query = new Query;        
     }
+
     /* $keys = [
         'setings'=>['id1','id2'],
         'ivrs'=>['id1','id2']
@@ -40,20 +48,20 @@ class ProcessCompany
             $this->log->info('Company found for display no : '.$this->display_number);
             $this->company_id = $this->company[0]['company_id'];
             $this->loadCompanyDetails();
-            $this->loadCompanySettings();
+                $this->loadCompanySettings();
             $this->loadIvrs();
-            $this->loadIvrSettings();
+                $this->loadIvrSettings();
             $this->loadNodes();
             $this->loadDepartments();
+    	        $this->loadDepartmentSettings();
             $this->loadCompanyUsers();
             $this->loadLanguages();
-	        $this->loadDepartmentSettings();
             
             $this->log->info('Company details for display no : '.json_encode($this->data));            
             print_r($this->data);
 
         }else{
-            $this->log->warn('Company not found for display no : '.$this->display_number);
+            $this->log->info('Company not found for display no : '.$this->display_number);
         }
         /* Hit SNS here  */
         try{
@@ -95,7 +103,8 @@ class ProcessCompany
         } else {
             // $this->log("company's details not found");
             // $this->log($this->company_id);
-        }   
+        }  
+        return $company_details; 
     }
     private function loadCompanySettings()
     {
@@ -111,7 +120,7 @@ class ProcessCompany
             $this->data[$hash] = null;
 
         }
-
+        return $company_settings;
     }
     private function loadIvrs()
     {
@@ -124,19 +133,20 @@ class ProcessCompany
         } else {
             $this->data[$hash] = null;
         }
-        
+        return $ivrs;
     }
     private function loadIvrSettings()
     {
-        $ivrs = $this->query->_fetch_ivr_settings($this->ivr_keys);
+        $ivr_settings = $this->query->_fetch_ivr_settings($this->ivr_keys);
         $hash = $this->display_number . ":ivr_settings";
 
-        if ($ivrs) {
-            $this->ivr_keys = array_keys($ivrs);
-            $this->data[$hash] = $ivrs;
+        if ($ivr_settings) {
+            $this->ivr_keys = array_keys($ivr_settings);
+            $this->data[$hash] = $ivr_settings;
         } else {
             $this->data[$hash] = null;
         }
+        return $ivr_settings;
     }
     private function loadNodes()
     {
@@ -148,6 +158,7 @@ class ProcessCompany
         } else {
             $this->data[$hash] = null;
         }   
+        return $nodes;
     }
     private function loadDepartments()
     {
@@ -160,7 +171,20 @@ class ProcessCompany
             $this->data[$hash] = null;
             /* ASK HERE if department is empty delete it or not */
         }
+        return $departments;
     }
+
+    private function loadDepartmentSettings()
+    {
+        $department_settings = $this->query->_fetch_department_settings($this->company_id);
+        $hash = $this->display_number . ":dept_settings";
+        
+        if ($department_settings) {
+            $this->data[$hash] = $department_settings;
+        } 
+        return $department_settings;
+    }
+
     private function loadCompanyUsers()
     {
         $users = $this->query->_fetch_company_users($this->company_id);
@@ -168,9 +192,8 @@ class ProcessCompany
 
         if ($users) {
             $this->data[$hash] = $users;
-        } else {
-            $this->data[$hash] = null;
-        }
+        } 
+        return $users;
     }
     private function loadLanguages()
     {
@@ -179,36 +202,24 @@ class ProcessCompany
 
         if ($languages) {
             $his->result[$hash] = $languages;
-        } else {
-            // $this->log("languages details not found");
-            // $this->log($this->company_id);
-            /* ASK HERE ALSO */
         }
-    }
-    private function loadDepartmentSettings()
-    {
-        $department_settings = $this->query->_fetch_department_settings($this->company_id);
-        $hash = $this->display_number . ":dept_settings";
-        
-        if ($department_settings) {
-            $this->data[$hash] = $department_settings;
-        } else {
-            $this->data[$hash] = $department_settings;
-        }
+        return $languages;
     }
    
 }
 
 
+/*************************************
+    For CRON
+**************************************/
 
-
-
-if (!empty($_REQUEST['data'])) {
-    $data = $_REQUEST['data'];
-    $post_data = json_decode($data, true);
-    $Class = new ProcessCompany();
-    $Class->run($post_data['display_number']);
-} else {
-    echo  "Invalid Request";
-}
-
+if( empty(getallheaders()) && ENV !='TESTING'){
+    if (!empty($_REQUEST['data']) ) {
+        $data = $_REQUEST['data'];
+        $post_data = json_decode($data, true);
+        $Class = new ProcessCompany();
+        $Class->run($post_data['display_number']);
+    } else {
+        echo  "Invalid Request";
+    }
+} 

@@ -2,6 +2,7 @@
 namespace Service;
 
 use Aws\Sns\SnsClient;
+use Dotenv\Dotenv;
 
 class SNS
 {
@@ -11,12 +12,12 @@ class SNS
     {
         $this->sns = new SnsClient([
             'credentials' => [
-                    'key'    => $_ENV['SNS']['KEY'],
-                    'secret' => $_ENV['SNS']['SECRET'],
+                    'key'    => getenv('SNS_KEY'),
+                    'secret' => getenv('SNS_SECRET'),
                 ],
-            'version' => $_ENV['SNS']['VERSION'],
-            'region'  => $_ENV['SNS']['REGION'],
-            'scheme' => $_ENV['SNS']['SCHEME']
+            'version' => getenv('SNS_VERSION'),
+            'region'  => getenv('SNS_REGION'),
+            'scheme' => getenv('SNS_SCHEME')
         ]);
 
     }
