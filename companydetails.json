@@ -1,0 +1,72 @@
+919873832455:details
+{
+    "id":"5ab25ca5d1801476",
+    "display_number":"919873832455",
+    "destination":"41160166",
+    "destination_2":"33576995",
+    "is_myoperator":"1",
+    "company_name":"Adesh Test Account",
+    "time_zone":"+05:30",
+    "account_type":"3",
+    "country_code":"+91",
+    "number_type":"2",
+    "created":"2018-03-21 13:22:45",
+    "event_push":"0"
+}
+919873832455:dept_settings
+{
+    "5ab25ca5d7779522":"{\"connection_method\":\"serial_alternate\",\"max_digits\":\"1\",\"node_menu\":\"53623aeaf2bc6381\",\"ring_time\":\"30\",\"timeout\":\"6000\",\"voicemail\":\"true\"}",
+    "5ab25ca5d76c8786":"{\"connection_method\":\"round_robin\",\"max_digits\":\"1\",\"node_menu\":\"53623aeaf2bc6381\",\"ring_time\":\"30\",\"sticky_agent\":\"2\",\"timeout\":\"6000\",\"voicemail\":\"true\"}",
+    "5ab25ca5d760c464":"{\"connection_method\":\"round_robin_alternate\",\"is_extension\":\"1\",\"max_digits\":\"2\",\"node_menu\":\"53623aeaf2bc6381\",\"ring_time\":\"30\",\"timeout\":\"6000\",\"voicemail\":\"true\"}"
+}
+919873832455:users
+{
+    "5ab25ca5d4a85198":"{\"uuid\":\"5ab25ca5d4a85198\",\"contact\":\"8527384897\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"10\",\"email\":\"adesh.pandey@myoperator.co\",\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919015241076\"},{\"display_number\":\"919555291879\"},{\"display_number\":\"914045965740\"},{\"display_number\":\"914045965726\"},{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:29:59\"}]}",
+    "5ab3811384dd4655":"{\"uuid\":\"5ab3811384dd4655\",\"contact\":\"9711640616\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"15\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ac7161f3ed08170":"{\"uuid\":\"5ac7161f3ed08170\",\"contact\":\"8839842988\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"16\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919873832455\"},{\"display_number\":\"914045965871\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ab3804c7ecaa349":"{\"uuid\":\"5ab3804c7ecaa349\",\"contact\":\"9971019537\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"12\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ab3803fbdb5d915":"{\"uuid\":\"5ab3803fbdb5d915\",\"contact\":\"9219198004\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"11\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919873832455\"},{\"display_number\":\"919650348349\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5af16b8566287771":"{\"uuid\":\"5af16b8566287771\",\"contact\":\"1143037649\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"landline\",\"contact_type_2\":null,\"extension\":\"17\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5b9b63b29fb2a357":"{\"uuid\":\"5b9b63b29fb2a357\",\"contact\":\"9015887797\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"19\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ab25ca5d7779522":"{\"id\":\"5ab25ca5d7779522\",\"name\":\"General Enquiry\",\"extension\":\"88\",\"display_number\":\"919873832455\",\"user_ids\":[\"5af16b8566287771\",\"5ab38065b9a3f747\",\"5ab25ca5d4a85198\",\"5af54028ad44f890\",\"5ac7161f3ed08170\",\"5b9b63b29fb2a357\",\"5ab3803fbdb5d915\",\"5ab380aa95856922\",\"5ab3811384dd4655\",\"5ab3804c7ecaa349\"],\"user_type\":\"2\"}",
+    "5ab380aa95856922":"{\"uuid\":\"5ab380aa95856922\",\"contact\":\"9451930053\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"14\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5af54028ad44f890":"{\"uuid\":\"5af54028ad44f890\",\"contact\":\"8750415919\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"18\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"18001034884\"},{\"display_number\":\"914045965740\"},{\"display_number\":\"\"},{\"display_number\":\"919212992129\"},{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ab38065b9a3f747":"{\"uuid\":\"5ab38065b9a3f747\",\"contact\":\"8447298637\",\"contact_2\":null,\"contact_country\":\"+91\",\"contact_2_country\":null,\"contact_type\":\"mobile\",\"contact_type_2\":null,\"extension\":\"13\",\"email\":null,\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919212992129\"},{\"display_number\":\"919555291879\"},{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}",
+    "5ab25ca5d76c8786":"{\"id\":\"5ab25ca5d76c8786\",\"name\":\"Sales\",\"extension\":\"89\",\"display_number\":\"919873832455\",\"user_ids\":[\"5af16b8566287771\",\"5ab38065b9a3f747\",\"5ab25ca5d4a85198\",\"5af54028ad44f890\",\"5ac7161f3ed08170\",\"5b9b63b29fb2a357\",\"5ab3803fbdb5d915\",\"5ab380aa95856922\",\"5ab3811384dd4655\",\"5ab3804c7ecaa349\"],\"user_type\":\"2\"}",
+    "5ab25ca5d760c464":"{\"id\":\"5ab25ca5d760c464\",\"name\":\"Extension Directory\",\"extension\":null,\"display_number\":\"919873832455\",\"user_ids\":[\"5af16b8566287771\",\"5ab38065b9a3f747\",\"5ab25ca5d4a85198\",\"5af54028ad44f890\",\"5ac7161f3ed08170\",\"5b9b63b29fb2a357\",\"5ab3803fbdb5d915\",\"5ab380aa95856922\",\"5ab3811384dd4655\",\"5ab3804c7ecaa349\"],\"user_type\":\"2\"}"
+}
+919873832455:ivrs
+{
+    "time":"[{\"ivr_name\":\"Call flow 08Jun\",\"ivr_basis\":\"time\",\"ivr_id\":\"5b1a23bd8b804887\",\"day\":127,\"start_time\":0,\"end_time\":0}]"
+}
+919873832455:dept
+{
+    "5ab25ca5d7779522":"{\"name\":\"General Enquiry\",\"users\":[{\"user_id\":\"5ab25ca5d4a85198\",\"language_id\":\"common\"}]}",
+    "5ab25ca5d76c8786":"{\"name\":\"Sales\",\"users\":[{\"user_id\":\"5ab25ca5d4a85198\",\"language_id\":\"common\"},{\"user_id\":\"5ab3803fbdb5d915\",\"language_id\":\"common\"},{\"user_id\":\"5ab3804c7ecaa349\",\"language_id\":\"common\"}]}",
+    "5ab25ca5d760c464":"{\"name\":\"Extension Directory\",\"users\":[]}"
+}
+919873832455:nodes
+{
+    "5b1a23bd8b804887":"[{\"id\":\"5b1a23bd8e08a186\",\"node_value\":\"0\",\"parent_id\":\"0\",\"lft\":\"0\",\"rght\":\"0\",\"plugin\":\"\",\"pre_processor\":\"\",\"post_processor\":\"\",\"sounds\":[{\"id\":\"5b1a2443b6077455\",\"node_id\":\"5b1a23bd8e08a186\",\"language_id\":\"common\",\"type\":\"mp3\",\"alias_name\":\"Play\",\"file_url\":\"http:\\\/\\\/mediagate.voicetree.info\\\/serve.php?filename=5b1a23d54ae8c538.mp3&app=myoperator.myoperator_v2\",\"filename\":\"5b1a23d54ae8c538.mp3\",\"file_hash\":\"b7b359e52f2ac4d9b588d064ed76464e\",\"property\":\"5b1a23bd8b804887\",\"status\":\"1\",\"synced_servers\":\"nonen1:s14:d1:d2:n2:s16:s17:s15:s8:s6:s7:\",\"created\":\"2018-06-08 06:37:55\",\"sound_library_id\":\"5b1a23d5d4897784\"}],\"properties\":{\"alias\":\"Welcome\",\"max_digits\":\"1\",\"node_menu\":\"53623a654de3f467\",\"timeout\":\"6\"}},{\"id\":\"5b1a2443bb9b4876\",\"node_value\":\"_0\",\"parent_id\":\"5b1a23bd8e08a186\",\"lft\":\"0\",\"rght\":\"0\",\"plugin\":\"\",\"pre_processor\":\"\",\"post_processor\":\"\",\"sounds\":[{\"id\":\"5b1a2504897bf922\",\"node_id\":\"5b1a2443bb9b4876\",\"language_id\":\"common\",\"type\":\"mp3\",\"alias_name\":\"Play\",\"file_url\":\"http:\\\/\\\/mediagate.voicetree.info\\\/serve.php?filename=5b1a24c842f56917.mp3&app=myoperator.myoperator_v2\",\"filename\":\"5b1a24c842f56917.mp3\",\"file_hash\":\"9d344b5a5bac8a08b01e9e21de6ad0dd\",\"property\":\"5b1a23bd8b804887\",\"status\":\"1\",\"synced_servers\":\"nones14:n1:d1:s15:s16:s8:n2:d2:s17:s6:s7:\",\"created\":\"2018-06-08 06:41:08\",\"sound_library_id\":\"5b1a24c8a4050696\"}],\"properties\":{\"alias\":\"main menu\",\"max_digits\":\"1\",\"node_menu\":\"53623ac8c160b432\",\"timeout\":\"6000\"}},{\"id\":\"5b1a245f1b2a1370\",\"node_value\":\"_15\",\"parent_id\":\"5b1a2443bb9b4876\",\"lft\":\"0\",\"rght\":\"0\",\"plugin\":\"\",\"pre_processor\":\"\",\"post_processor\":\"\",\"sounds\":[{\"id\":\"5b1a245f1b1e7903\",\"node_id\":\"5b1a245f1b2a1370\",\"language_id\":\"common\",\"type\":\"mp3\",\"alias_name\":\"Play\",\"file_url\":\"http:\\\/\\\/mediagate.voicetree.info\\\/serve.php?filename=5ab25ca9bb678936.mp3&app=myoperator.myoperator_v2\",\"filename\":\"5ab25ca9bb678936.mp3\",\"file_hash\":null,\"property\":\"5b1a23bd8b804887\",\"status\":\"1\",\"synced_servers\":\"nones17:s6:s7:s14:n1:d1:s16:n2:s15:d2:s8:\",\"created\":\"2018-06-08 06:38:23\",\"sound_library_id\":\"5ab25cb191869739\"}],\"properties\":{\"alias\":\"Sales\",\"connection_method\":\"round_robin\",\"extension_group\":\"5ab25ca5d76c8786\",\"max_digits\":\"1\",\"music\":\"rHhTt\",\"node_menu\":\"53623aeaf2bc6381\",\"outcall_number\":\"123456\",\"ring_time\":\"30\",\"sticky_agent\":\"2\",\"timeout\":\"6000\",\"voicemail\":\"false\"}},{\"id\":\"5b1a245f1d370354\",\"node_value\":\"_25\",\"parent_id\":\"5b1a2443bb9b4876\",\"lft\":\"0\",\"rght\":\"0\",\"plugin\":\"\",\"pre_processor\":\"\",\"post_processor\":\"\",\"sounds\":[{\"id\":\"5b1a245f1d2b8395\",\"node_id\":\"5b1a245f1d370354\",\"language_id\":\"common\",\"type\":\"mp3\",\"alias_name\":\"Play\",\"file_url\":\"http:\\\/\\\/mediagate.voicetree.info\\\/serve.php?filename=5ab25ca9bb678936.mp3&app=myoperator.myoperator_v2\",\"filename\":\"5ab25ca9bb678936.mp3\",\"file_hash\":null,\"property\":\"5b1a23bd8b804887\",\"status\":\"1\",\"synced_servers\":\"nones17:s6:s7:s14:n1:d1:s16:n2:s15:d2:s8:\",\"created\":\"2018-06-08 06:38:23\",\"sound_library_id\":\"5ab25cb191869739\"}],\"properties\":{\"alias\":\"General Enquiry\",\"connection_method\":\"serial_alternate\",\"extension_group\":\"5ab25ca5d7779522\",\"max_digits\":\"1\",\"music\":\"rHhTt\",\"node_menu\":\"53623aeaf2bc6381\",\"outcall_number\":\"123456\",\"ring_time\":\"30\",\"timeout\":\"6000\",\"voicemail\":\"false\"}},{\"id\":\"5b1a245f1dd22210\",\"node_value\":\"_3c\",\"parent_id\":\"5b1a2443bb9b4876\",\"lft\":\"0\",\"rght\":\"0\",\"plugin\":\"\",\"pre_processor\":\"\",\"post_processor\":\"\",\"sounds\":[{\"id\":\"5b1a258a764db250\",\"node_id\":\"5b1a245f1dd22210\",\"language_id\":\"common\",\"type\":\"mp3\",\"alias_name\":\"Play\",\"file_url\":\"http:\\\/\\\/mediagate.voicetree.info\\\/serve.php?filename=5b1a2519ef666430.mp3&app=myoperator.myoperator_v2\",\"filename\":\"5b1a2519ef666430.mp3\",\"file_hash\":\"7b1a6a2605cceba50ac60d0967c4d611\",\"property\":\"5b1a23bd8b804887\",\"status\":\"1\",\"synced_servers\":\"nones17:s7:s14:s15:n1:s16:d1:s8:s6:d2:n2:\",\"created\":\"2018-06-08 06:43:22\",\"sound_library_id\":\"5b1a251a55aa4789\"}],\"properties\":{\"alias\":\"Custom Message\",\"api_url\":\"http:\\\/\\\/n2.voicetree.info\\\/input-test\\\/index.php\",\"offset\":\"2\",\"sound_repeat\":\"1\",\"timeout\":\"5000\"}}]"
+}
+919873832455:settings
+{
+    "account_version":"2",
+    "coc_context":"engine3_adesh_clickocall_new",
+    "coc_server":"http:\/\/n1.voicetree.info\/clickocallapi\/index.php",
+    "comma_dial":"true",
+    "datacenter":"noid_cs",
+    "dial_optr":"1",
+    "extension_digit":"2",
+    "ivr_basis":"time",
+    "logs_mail":"0",
+    "max_call_duration":"60",
+    "sb_country_code":"+91",
+    "sb_expiry_time":"2018-06-12 09:28:22",
+    "sb_ivr_id":"5b1a23bd8b804887_2",
+    "sb_mobile_no":"8527384897"
+}
+919873832455:ivr_settings
+{
+    "5b1a23bd8b804887":"{\"after_menu_number\":\"\",\"call_recording\":\"1\",\"max_menu_reply\":\"2\",\"moh\":\"1\",\"music\":\"m(5ab25ca9bb678936)hTt\",\"setup\":\"3\"}"
+}

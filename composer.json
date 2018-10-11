@@ -1,0 +1,25 @@
+{
+    "name": "prabhat2k15/redis",
+    "description": "Redis Exception handling",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Prabhat Kumar",
+            "email": "prabhat2k15@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "predis/predis": "^2.0@dev",
+        "apache/log4php": "2.3.0",
+        "aws/aws-sdk-php": "^3.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "app/"
+        },
+        "files": ["config.php"]
+
+    }
+}
