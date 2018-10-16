@@ -42,17 +42,22 @@ The structure follows psr-4 standards
 - URL `/`
 - Method `GET` or `POST` any 
     - @param string `$display_number` -company's display number
-    - @param array `$keys` -the keys whose details to be fetched
+    - @param array `$keys` (optional)-the keys whose details to be fetched. If not given, all details of the company will be fetched
     - @response json 
 
 - Success Response
-    - code : 200 
+    - code : `200` 
     - ``` {status : true, message:'success message'} ```
 - Failure Response
-    - code : 200  
+    - code : `401` or `404`  
     - ``` {status : false, message:'failure message'} ```
-
-
+- Example 
+    - /?display_number=919873832455 
+        - Fetches all data of the company whose display number is given 
+    - /?display_number=919873832455&keys={"companies":{"destination":[],"destination_2":[]}}
+        - Fetches compnay details whose display no is given with destination and destination_2 with their respective values fetched from db
+    - /?display_number=919873832455&keys={"companies":{}, "ivrs":{}}
+        - Fetches details of the compnay and ivrs whose display number is given
 
 ### Who do I talk to? ###
 
