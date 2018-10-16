@@ -6,9 +6,11 @@ This api fetches different details of the company and push it to SNS.
 
 
 ### How do I  set up? ###
-* git clone <repo>
-* cd <dir>
+* git clone repo
+* cd repo-name
 * composer install(for production, composer install --no-dev)
+* cp .env.example .env (copy enviroment file)
+* Set the proper credentials
 
 #### Directory Structure
 The structure follows psr-4 standards
@@ -37,10 +39,11 @@ The structure follows psr-4 standards
 ```
 
 ### API
-- GET /
-@param string $display_number -comapny's display number
-@param array $keys -the keys whose details to b fetched
-@response json 
+- URL `/`
+- Method `GET` or `POST` any 
+    - @param string `$display_number` -company's display number
+    - @param array `$keys` -the keys whose details to be fetched
+    - @response json 
 
 - Success Response
     - code : 200 
