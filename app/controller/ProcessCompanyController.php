@@ -49,6 +49,7 @@ class ProcessCompanyController
      */
     public function run($display_number=null, $keys=[])
     {
+        // var_dump($keys); die;
         $this->process_company->display_number = $display_number;
         $query = new Query;
         $company = $query->_pick_company($display_number);
@@ -58,18 +59,18 @@ class ProcessCompanyController
         if(empty($keys)){
             //upload all data
             $this->log->info('Loading all data for '.$display_number);
-            $this->process_company->run('all');
-            return;
+            $this->response = $this->process_company->run('all');
+            return $this->response;
         }else{
-            echo 'Loading individual data'."\n";
+            $this->log->info('Loading individual data for '.$display_number);
             foreach($keys as $key => $ids){
-                $this->process_company->run($key, $ids);
+                $this->response = $this->process_company->run($key, $ids);
             }
         }
-        $this->log->info('Company details for display no : '.json_encode($this->data));            
+        $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
 
-        print_r($this->process_company->data);
-        return $this->process_company->response;
+        // print_r($this->process_company->data);
+        return $this->response;
 
     }
    

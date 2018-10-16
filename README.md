@@ -1,9 +1,5 @@
-# README #
-
-# 1.  Process Company API
+#   Process Company API
 This api fetches different details of the company and push it to SNS.
-
-
 
 ### How do I  set up? ###
 * git clone repo

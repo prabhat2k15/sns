@@ -10,7 +10,7 @@ return array(
                 'class' => 'LoggerLayoutSimple'
             ),
             'params' => array(
-            	'file' => '/var/log/mylog.log',
+            	'file' => getenv('LOG_PATH'),
             	'append' => true
             )
         )

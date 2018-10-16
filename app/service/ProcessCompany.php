@@ -26,6 +26,7 @@ class ProcessCompany
     public $display_number;
     public $company_id;
     public $log;
+    public $response = array();
 
     public function __construct()
     {   
@@ -33,9 +34,9 @@ class ProcessCompany
         $this->log = Logger::getLogger('company');
         
         $validation = new Validation;
-        $status = $validation->validateConfig();
-        if(!$status['status']){
-            echo json_encode($status);
+        $validator_response = $validation->validateConfig();
+        if(!$validator_response['status']){
+            echo json_encode($validator_response);
             exit;
         }
         
@@ -96,7 +97,6 @@ class ProcessCompany
                     break;
                 default:
                     $this->log->warn('Invalid Request. Running default for: '.$this->display_number);
-                    echo 'Invalid Request';
                     return "invalid request";
 
             }
@@ -111,9 +111,10 @@ class ProcessCompany
             // $sns->publish($this->data);
         }catch(\Exception $e){
             $this->log->error('SNS push failed for display no : '.$this->display_number .'|||'. $e->getMessage());
+
         }
         
-
+        return $this->data;
 
     }
 
