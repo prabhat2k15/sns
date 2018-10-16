@@ -89,7 +89,8 @@ class Query {
                     $decode[] = $tmp_ivr;
                     $ivrs[$tmp['ivr_basis']] = json_encode($decode);
                 } else {
-                    $ivrs[$tmp['ivr_basis']] = json_encode(array($tmp_ivr));
+                    // $ivrs[$tmp['ivr_basis']] = json_encode(array($tmp_ivr));
+                    $ivrs[$tmp['ivr_basis']] = json_encode(($tmp_ivr));
                 }
             }
         } else {
@@ -185,7 +186,8 @@ class Query {
 
                 $sql1 = "SELECT * FROM timing_managers WHERE type_id = '" . $user['uuid'] . "' AND type = 'user'";
                 $timings = $this->db->customSelect($sql1);
-		echo "\n";$z = 0;
+        // echo "\n";
+        $z = 0;
                 if ($timings) {
                     foreach ($timings as $timing) {
                         $day = 0;
@@ -197,7 +199,7 @@ class Query {
                         $day = ($timing['fri'] == '1') ? $day + 32 : $day;
                         $day = ($timing['sat'] == '1') ? $day + 64 : $day;
                         $company_users[$user['uuid']]['timing_manager'][] = array('day' => $day, 'start_time' => $timing['start_time'], 'end_time' => $timing['end_time']);
-			print_r($company_users[$user['uuid']]);echo "\n z : ". $z++ . " \n";
+			//print_r($company_users[$user['uuid']]);echo "\n z : ". $z++ . " \n";
                     }
                 } else {
 			if ($user['is_enabled'] == 1) {
@@ -340,8 +342,10 @@ class Query {
 
     function _pick_request_from_db() {
         $current_time = time();
-        $sql = "SELECT * FROM reload_queues WHERE is_processed = 9 AND load_at <= $current_time";echo $sql. "\n";
-        $requests = $this->db->customSelect($sql); print_r($requests);
+        $sql = "SELECT * FROM reload_queues WHERE is_processed = 9 AND load_at <= $current_time";
+        // echo $sql. "\n";
+        $requests = $this->db->customSelect($sql); 
+        // print_r($requests);
         $current_requests = array();
         if (!empty($requests)) {
             foreach ($requests as $request) {
@@ -364,7 +368,7 @@ class Query {
         if (!empty($requests)) {
             foreach ($requests as $request) {
                 $update_request = "UPDATE reload_queues SET is_processed = 7 WHERE id = '" . $request['id'] . "'";
-		print_r($update_request);echo "\n";
+		// print_r($update_request);echo "\n";
                 $result = $this->db->custom_update($update_request); // returns affected rows
                 if ($result) {
                     $current_requests[] = $request;

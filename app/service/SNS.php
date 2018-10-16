@@ -1,4 +1,12 @@
 <?php
+/**
+ * Proocess Company SNS API
+ *
+ * @category Class
+ * @package  ProcessCompanyAPI
+ * @author   Prabhat Kumar <prabhat.kumar@myoperator.co>
+ * @license  Proprietary http://myoperator.co
+ */
 namespace Service;
 
 use Aws\Sns\SnsClient;

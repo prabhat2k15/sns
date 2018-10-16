@@ -1,4 +1,12 @@
 <?php
+/**
+ * Proocess Company Validation Class
+ *
+ * @category Class
+ * @package  ProcessCompanyAPI
+ * @author   Prabhat Kumar <prabhat.kumar@myoperator.co>
+ * @license  Proprietary http://myoperator.co
+ */
 namespace Service;
 
 use Logger;

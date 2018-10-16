@@ -20,6 +20,7 @@ class Database {
 	        $this->conn->setAttribute( PDO::ATTR_PERSISTENT, true );
             $this->conn->exec("use ".$this->dbname.";");//"use myoperator;");//????????????
         } catch (\PDOException $e) {
+            echo json_encode(array('status'=>false,'message'=>$e->getMessage()));
             $this->log->warn('!!!!!! PDO EXCEPTION !!!!!!!'.$e->getMessage());
             exit;
         }
@@ -139,7 +140,7 @@ class Database {
 
         $sql1 = "SELECT MAX( id ) FROM  `$tbl`";
         try {
-            echo "\n";print_r($sql);echo "\n";
+            //echo "\n";print_r($sql);echo "\n";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $stmt2 = $this->conn->prepare($sql1);
@@ -165,7 +166,7 @@ class Database {
 
         $sql1 = "SELECT MAX( id ) FROM  `$tbl`";
         try {
-            echo "\n";print_r($sql);echo "\n";
+            // echo "\n";print_r($sql);echo "\n";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             $stmt2 = $this->conn->prepare($sql1);
