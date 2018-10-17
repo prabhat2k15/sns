@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<phpdocumentor>
+    <parser>
+    <target>docs</target>
+  </parser>
+  <transformer>
+    <target>docs</target>
+  </transformer>
+  <files>
+    <directory>app</directory>
+  </files>
+    <transformations>
+        <template name="responsive"/>
+        <template name="checkstyle"/>
+    </transformations>
+</phpdocumentor>

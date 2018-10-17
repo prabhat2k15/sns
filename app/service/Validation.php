@@ -12,6 +12,9 @@ namespace Service;
 use Logger;
 use Dotenv\Dotenv;
 
+/**
+ * Validation class : deals with validation of different enviroment files
+ */
 class Validation
 {
     public $response=[];

@@ -16,6 +16,10 @@ use Service\ProcessCompany;
 use Service\Validation;
 use Model\Query;
 
+/**
+ * Class : This class controls the incoming request and passes the request to Process Company Class.
+ * Extends : None
+ */
 class ProcessCompanyController 
 {
     private $data = array();

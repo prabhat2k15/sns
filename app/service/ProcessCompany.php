@@ -16,6 +16,9 @@ use Logger;
 use Model\Query;
 use Dotenv\Dotenv;
 
+/**
+ * Process Company class 
+ */
 class ProcessCompany 
 {
     private $query;
@@ -107,8 +110,8 @@ class ProcessCompany
 
         /* Pushing data to SNS here  */
         try{
-            // $sns = new SNS;
-            // $sns->publish($this->data);
+            $sns = new SNS;
+            $sns->publish($this->data);
         }catch(\Exception $e){
             $this->log->error('SNS push failed for display no : '.$this->display_number .'|||'. $e->getMessage());
 

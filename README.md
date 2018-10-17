@@ -55,6 +55,14 @@ The structure follows psr-4 standards
     - /?display_number=919873832455&keys={"companies":{}, "ivrs":{}}
         - Fetches details of the compnay and ivrs whose display number is given
 
+### Documents
+You can generate the docs by using following steps.
+-   cd repo-dir
+-   type `vendor/bin/phpdoc` in the terminal and hit enter
+The documents will be created in docs folder.
+
+You will find the detailed documentation at the given below url
+- /docs
 ### Who do I talk to? ###
 
 * Repo owner or admin
