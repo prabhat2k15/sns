@@ -29,19 +29,19 @@ class ProcessCompany
     public $display_number;
     public $company_id;
     public $log;
-    public $response = array();
+    public $response = array('status'=>false);
 
     public function __construct()
     {   
         Logger::configure(__DIR__.'/../../logconf.php');
         $this->log = Logger::getLogger('company');
         
-        $validation = new Validation;
-        $validator_response = $validation->validateConfig();
-        if(!$validator_response['status']){
-            echo json_encode($validator_response);
-            exit;
-        }
+        // $validation = new Validation;
+        // $validator_response = $validation->validateConfig();
+        // if(!$validator_response['status']){
+        //     echo json_encode($validator_response);
+        //     exit;
+        // }
         
         $this->query = new Query;        
     }
@@ -56,8 +56,14 @@ class ProcessCompany
      */
     public function run($key, $ids=[])
     {
+        $company = $this->query->_pick_company($this->display_number);
+
         // $this->initCompanyDetails();
-        if(!empty($this->company_id)){
+        if(!empty($company)){
+
+            $this->company_id = $company[0]['company_id'];
+            $this->log->info('New Request For Company Id : '.$this->company_id);
+    
             
             switch($key){
                 case 'companies':
@@ -96,28 +102,27 @@ class ProcessCompany
                     $this->loadNodes();
                     $this->loadDepartments();
                     $this->loadDepartmentSettings();
-                    $this->loadLanguages();
+                    $this->loadLanguages();                    
                     break;
                 default:
                     $this->log->warn('Invalid Request. Running default for: '.$this->display_number);
-                    return "invalid request";
+                    return $this->response['message'] = 'Invalid Key for display no : '.$this->display_number;
 
             }
+        
+            $this->response['status'] = true;
+            $this->response['message'] = 'Success';
 
         }else{
+            $this->initCompanyDetails();
             $this->log->info('Company not found for display no : '.$this->display_number);
+            $this->response['message'] = 'Company not found for display no : '.$this->display_number;
         }
 
-        /* Pushing data to SNS here  */
-        try{
-            $sns = new SNS;
-            $sns->publish($this->data);
-        }catch(\Exception $e){
-            $this->log->error('SNS push failed for display no : '.$this->display_number .'|||'. $e->getMessage());
-
-        }
+       
         
-        return $this->data;
+        // print_r($this->data);
+        return $this->response;
 
     }
 

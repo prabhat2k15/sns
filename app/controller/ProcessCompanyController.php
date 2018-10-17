@@ -15,6 +15,8 @@ use Logger;
 use Service\ProcessCompany;
 use Service\Validation;
 use Model\Query;
+use Dotenv\Dotenv;
+use Service\SNS;
 
 /**
  * Class : This class controls the incoming request and passes the request to Process Company Class.
@@ -26,19 +28,22 @@ class ProcessCompanyController
     private $display_number;
     private $company_id;
     private $response;
+    private $validation;
     public $log;
+
 
     public function __construct()
     {   
+        $this->validation = new Validation;
+        $validator_response = $this->validation->validateConfig();
+        if(!$validator_response['status']){
+            echo json_encode($validator_response);
+            exit;
+        }
+
         Logger::configure(__DIR__.'/../../logconf.php');
         $this->log = Logger::getLogger('company');
         
-        $validation = new Validation;
-        $status = $validation->validateConfig();
-        if(!$status['status']){
-            echo json_encode($status);
-            exit;
-        }
         
         $this->process_company = new ProcessCompany;        
     }
@@ -53,27 +58,36 @@ class ProcessCompanyController
      */
     public function run($display_number=null, $keys=[])
     {
-        // var_dump($keys); die;
         $this->process_company->display_number = $display_number;
-        $query = new Query;
-        $company = $query->_pick_company($display_number);
-        $this->process_company->company_id = $company[0]['company_id'];
-        $this->log->info('New Request For Company Id : '.$this->process_company->company_id);
-
+        
         if(empty($keys)){
-            //upload all data
             $this->log->info('Loading all data for '.$display_number);
             $this->response = $this->process_company->run('all');
             return $this->response;
-        }else{
-            $this->log->info('Loading individual data for '.$display_number);
-            foreach($keys as $key => $ids){
-                $this->response = $this->process_company->run($key, $ids);
-            }
-        }
-        $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
 
-        // print_r($this->process_company->data);
+        }else{
+            if($this->validation->validateKeys($keys)){
+                $this->log->info('Loading individual data for '.$display_number);
+                foreach($keys as $key => $ids){
+                    $this->response = $this->process_company->run($key, $ids);
+                }
+            }else{
+                $this->response['status'] = false;
+                $this->response['message'] = 'Key or Keys invalid';
+            }
+            
+        }
+
+        // $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
+        
+        /* Pushing data to SNS here  */
+        // try{
+        //     $sns = new SNS;
+        //     $sns->publish($this->data);
+        // }catch(\Exception $e){
+        //     $this->log->error('SNS push failed for display no : '.$this->display_number .'|||'. $e->getMessage());
+
+        // }
         return $this->response;
 
     }

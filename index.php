@@ -1,11 +1,7 @@
 <?php
 include_once('vendor/autoload.php');
-use Controller\ProcessCompanyController;
-use Dotenv\Dotenv;
 
-// Loading Enviroment Files
-$dotenv = new Dotenv(__DIR__);
-$dotenv->load();
+use Controller\ProcessCompanyController;
 
 $keys = [
         'companies'=>[
@@ -54,9 +50,9 @@ $keys = [
 //     $keys = json_encode($keys);
 // echo $keys; die;
 if(!empty($_REQUEST['display_number'])){
-   $keys = $_REQUEST['keys'] ?? json_encode([]);
+    
+    $keys = $_REQUEST['keys'] ?? json_encode([]);
     $keys=json_decode($keys, 1);
-//    print_r($keys);die;
     $pc = new ProcessCompanyController;
     
     echo json_encode($pc->run($_REQUEST['display_number'], $keys));

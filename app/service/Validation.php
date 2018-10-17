@@ -22,8 +22,8 @@ class Validation
     
     public function __construct()
     {
-        Logger::configure(__DIR__.'/../../logconf.php');
-        $this->log = Logger::getLogger('company');
+        // Logger::configure(__DIR__.'/../../logconf.php');
+        // $this->log = Logger::getLogger('company');
 
         $this->response = array(
             'status'=>true,
@@ -32,16 +32,12 @@ class Validation
     }
     public function validateConfig()
     {
-        if(!file_exists(__DIR__.'/../../.env') && !file_exists(__DIR__.'/../../logconf.php')){
-            $this->log->warn(date('Y-m-d H:i:s').'!!!!!! .env file not found !!!!!!!');
+        if(!file_exists(__DIR__.'/../../.env')){// && !file_exists(__DIR__.'/../../logconf.php')){
             http_response_code(404);
             $this->response['status']=false;
             $this->response['message']='Enviroment file not found';
             return $this->response;
         }
-
-        Logger::configure(__DIR__.'/../../logconf.php');
-        $this->log = Logger::getLogger('company');
 
         try{
             $dotenv = new Dotenv(__DIR__.'/../../');
@@ -58,6 +54,11 @@ class Validation
                 'SNS_REGION',
                 'SNS_SCHEME',
             ]);
+
+            Logger::configure(__DIR__.'/../../logconf.php');
+            $this->log = Logger::getLogger('company');
+
+
         }catch(\Exception $e){
             $this->log->warn(date('Y-m-d H:i:s').'!!!!!! Configuration Not Found. Also check config keys !!!!!!!');
             http_response_code(404);
@@ -66,9 +67,27 @@ class Validation
         }
         return $this->response;
     }
-    public function validateDBConnection()
+    public function validateKeys($keys)
     {
+        $arr = [
+            'companies',
+            'company_settings',
+            'company_users',
+            'ivrs',
+            'ivr_settings',
+            'nodes',
+            'departments',
+            'department_settings',
+            'languages'
+        ];
 
+        if(empty($keys)){
+            return true;
+        }
+        if(empty(array_diff(array_keys($keys), $arr))){
+            return true;
+        }
+        return false;
     }
 }
 

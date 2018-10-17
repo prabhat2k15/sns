@@ -55,6 +55,10 @@ The structure follows psr-4 standards
     - /?display_number=919873832455&keys={"companies":{}, "ivrs":{}}
         - Fetches details of the compnay and ivrs whose display number is given
 
+### Tests
+To run test,
+- type `vendor/bin/phpunit` and hit enter
+
 ### Documents
 You can generate the docs by using following steps.
 -   cd repo-dir
