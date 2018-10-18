@@ -15,7 +15,6 @@ use Logger;
 use Service\ProcessCompany;
 use Service\Validation;
 use Model\Query;
-use Dotenv\Dotenv;
 use Service\SNS;
 
 /**
@@ -29,7 +28,7 @@ class ProcessCompanyController
     private $company_id;
     private $response;
     private $validation;
-    private static $count = 1;
+
     public $log;
 
 
@@ -59,9 +58,6 @@ class ProcessCompanyController
      */
     public function run($display_number=null, $keys=[])
     {
-        if(self::$count == 2){
-            return $this->response;
-        }
         $this->process_company->display_number = $display_number;
         
         if(empty($keys)){
