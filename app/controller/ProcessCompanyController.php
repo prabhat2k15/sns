@@ -29,6 +29,7 @@ class ProcessCompanyController
     private $company_id;
     private $response;
     private $validation;
+    private static $count = 1;
     public $log;
 
 
@@ -58,12 +59,14 @@ class ProcessCompanyController
      */
     public function run($display_number=null, $keys=[])
     {
+        if(self::$count == 2){
+            return $this->response;
+        }
         $this->process_company->display_number = $display_number;
         
         if(empty($keys)){
             $this->log->info('Loading all data for '.$display_number);
             $this->response = $this->process_company->run('all');
-            return $this->response;
 
         }else{
             if($this->validation->validateKeys($keys)){
@@ -78,16 +81,19 @@ class ProcessCompanyController
             
         }
 
-        // $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
+        $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
         
         /* Pushing data to SNS here  */
-        // try{
-        //     $sns = new SNS;
-        //     $sns->publish($this->data);
-        // }catch(\Exception $e){
-        //     $this->log->error('SNS push failed for display no : '.$this->display_number .'|||'. $e->getMessage());
+        try{
+            $sns = new SNS;
+            $sns->publish($this->process_company->data);
+        }catch(\Exception $e){
+            $this->log->error('SNS push failed for display no : '.$this->process_company->display_number .'|||'. $e->getMessage());
+            $this->response['status'] = false;
+            $this->response['message'] = 'SNS push failed';
 
-        // }
+        }
+        // print_r($this->process_company->data);
         return $this->response;
 
     }

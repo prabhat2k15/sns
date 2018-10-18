@@ -15,16 +15,10 @@ class ProcessCompanyTest extends TestCase
         $display_number = '12313123';//wrong display no
         $response = $pcc->run($display_number);
 
-        $pc = new ProcessCompany;
-        $reflector = new ReflectionClass($pc);
-        // $method = $reflector->getMethod('initCompanyDetails');
-        // $method->setAccessible(true);
-        // $method->invoke($pc);
+        $data = $pcc->process_company->data;
 
-        $reflData = $reflector->getProperty('data');
-        $reflData->setAccessible(true);
         $is_empty = true;
-        foreach($reflData->getValue($pc) as $value){
+        foreach($data as $value){
             if(!empty($value)){
                 $is_empty = false;
             }
@@ -37,8 +31,16 @@ class ProcessCompanyTest extends TestCase
         $pcc = new ProcessCompanyController;
         $display_number = '919873832455';//valid display no
         $response = $pcc->run($display_number);
-
-        $this->assertTrue($response['status']);
+        
+        $data = $pcc->process_company->data;
+        $is_empty = true;
+        foreach($data as $key => $value){
+            if(!empty($key)){
+                $is_empty = false;
+                break;
+            }
+        }
+        $this->assertFalse($is_empty);
     }
 
     public function testForLoadingCompanyUsersDetails()

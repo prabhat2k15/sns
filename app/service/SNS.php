@@ -42,8 +42,7 @@ class SNS
             // 'TargetArn' => '<string>',
             'TopicArn' => 'arn:aws:sns:us-east-2:733584512176:testsns',
         ]);
-        print_r($result);
-        echo 'done';
+        return $result;
     }
 }
 ?>
