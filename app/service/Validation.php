@@ -60,7 +60,7 @@ class Validation
 
 
         }catch(\Exception $e){
-            $this->log->warn(date('Y-m-d H:i:s').'!!!!!! Configuration Not Found. Also check config keys !!!!!!!');
+            // $this->log->warn(date('Y-m-d H:i:s').'!!!!!! Configuration Not Found. Also check config keys !!!!!!!');
             http_response_code(404);
             $this->response['status']=false;
             $this->response['message']='Configuration Not Found. Also check config keys.';           

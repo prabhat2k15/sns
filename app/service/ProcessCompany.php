@@ -167,10 +167,9 @@ class ProcessCompany
 	        $event_push = $this->query->_fetch_company_event_push($this->company_id);
             $company_details[0]['event_push'] = ($event_push == true) ? 1 : 0;
             $this->data[$hash] = $company_details[0];
-        } else {
-            // $this->log("company's details not found");
-            // $this->log($this->company_id);
-        }  
+        } else{
+            $this->data[$hash] = null;
+        } 
         return $company_details; 
     }
 
@@ -194,6 +193,8 @@ class ProcessCompany
                 $settings = (array_intersect_key($settings, $ids));
             }
             $this->data[$hash] = $settings;
+        } else{
+            $this->data[$hash] = null;
         } 
         return $company_settings;
     }
@@ -279,7 +280,9 @@ class ProcessCompany
                 $nodes=$filter_data;
             }
             $this->data[$hash] = $nodes;
-        }
+        }else{
+            $this->data[$hash] = null;
+        } 
         return $nodes;
     }
 
@@ -302,6 +305,8 @@ class ProcessCompany
                $departments = $filter_data;
             }
             $this->data[$hash] = $departments;
+        } else{
+            $this->data[$hash] = null;
         } 
         return $departments;
     }
@@ -326,6 +331,8 @@ class ProcessCompany
                 $department_settings = $filter_data;
             }
             $this->data[$hash] = $department_settings;
+        } else{
+            $this->data[$hash] = null;
         } 
         return $department_settings;
     }
@@ -348,7 +355,10 @@ class ProcessCompany
                 $users = $filter_data;
             }
             $this->data[$hash] = $users;
+        }else{
+            $this->data[$hash] = null;
         } 
+        
         return $users;
     }
 
@@ -371,7 +381,9 @@ class ProcessCompany
                 $languages = $filter_data;
             }
             $this->data[$hash] = $languages;
-        }
+        }else{
+            $this->data[$hash] = null;
+        } 
         return $languages;
     }
 
@@ -386,25 +398,50 @@ class ProcessCompany
     private function filterData($old, $new)
     {
         $new_ar=[];
+        // print_r($old);
+        // print_r($new);
+
         foreach($new as $key=>$ids){
-            if(!isset(json_decode($old[$key],1)[0])){
-                foreach($ids as $id){
-                    if(isset(json_decode($old[$key],1)[$id])){
-                        $new_ar[$key][$id] = json_decode($old[$key],1)[$id];
+            if(array_key_exists($key, $old)){
+                if(empty($ids)){
+                    $new_ar[$key] = $old[$key];
+                }else{
+                    foreach($ids as $id){
+                        $new_ar[$key][$id] = isset(json_decode($old[$key],1)[$id]) ? json_decode($old[$key],1)[$id] : json_decode($old[$key],1)[0][$id];
                     }
                 }
+                
             }else{
-                foreach($ids as $id){
-                    if(isset(json_decode($old[$key],1)[0][$id])) {
-                        $new_ar[$key][0][$id] = json_decode($old[$key],1)[0][$id];
-                    }
-                }
-            }
-            foreach ($new_ar as $key => $value) {
-                $new_ar[$key] = json_encode($value);
+               $new_ar[$key] = null; 
             }
         }
+        // foreach ($new_ar as $key => $value) {
+        //     $new_ar[$key] = json_encode($value);
+        // }
         return $new_ar;
+
+        // die;
+        // foreach($new as $key=>$ids){
+        //     if(!isset(json_decode($old[$key],1)[0])){
+        //         foreach($ids as $id){
+        //             if(isset(json_decode($old[$key],1)[$id])){
+        //                 $new_ar[$key][$id] = json_decode($old[$key],1)[$id];
+        //             }
+        //         }
+        //     }else{
+        //         foreach($ids as $id){
+        //             if(isset(json_decode($old[$key],1)[0][$id])) {
+        //                 $new_ar[$key][0][$id] = json_decode($old[$key],1)[0][$id];
+        //             }
+        //         }
+        //     }
+        //     foreach ($new_ar as $key => $value) {
+        //         $new_ar[$key] = json_encode($value);
+        //     }
+        // }
+        // // print_r($new_ar);
+        // die;
+        // return $new_ar;
     }
    
 }

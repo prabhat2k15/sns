@@ -40,7 +40,7 @@ class SNS
             'MessageStructure' => 'raw',
             'Subject' => 'Test Sub',
             // 'TargetArn' => '<string>',
-            'TopicArn' => 'arn:aws:sns:us-east-2:733584512176:testsns',
+            'TopicArn' => getenv('SNS_TOPIC'),
         ]);
         return $result;
     }

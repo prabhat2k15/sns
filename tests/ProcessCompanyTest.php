@@ -50,7 +50,7 @@ class ProcessCompanyTest extends TestCase
         $keys = [
             'company_users'=>[
                     '542c021d6745d657'=>['is_enabled','timing_manager'],
-                    '57c5dd207e859871'=>['is_enabled'],
+                    '57c5dd207e859871'=>['name'],
             ]
         ];
         $response = $pcc->run($display_number, $keys);

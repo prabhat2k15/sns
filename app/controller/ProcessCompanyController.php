@@ -76,7 +76,6 @@ class ProcessCompanyController
             }
             
         }
-
         $this->log->info('Company details for display no : '.$display_number.':'.json_encode($this->process_company->data),JSON_PRETTY_PRINT);            
         
         /* Pushing data to SNS here  */

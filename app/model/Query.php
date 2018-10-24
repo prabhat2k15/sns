@@ -89,8 +89,8 @@ class Query {
                     $decode[] = $tmp_ivr;
                     $ivrs[$tmp['ivr_basis']] = json_encode($decode);
                 } else {
-                    // $ivrs[$tmp['ivr_basis']] = json_encode(array($tmp_ivr));
-                    $ivrs[$tmp['ivr_basis']] = json_encode(($tmp_ivr));
+                    $ivrs[$tmp['ivr_basis']] = json_encode(array($tmp_ivr));
+                    // $ivrs[$tmp['ivr_basis']] = json_encode(($tmp_ivr));
                 }
             }
         } else {
@@ -165,9 +165,10 @@ class Query {
 
     function _fetch_company_users($company_id) {
         $user = array();
+        // $sql = "SELECT C.uuid, C.contact, C.contact_2, C.contact_type, C.contact_type_2, C.is_enabled, C.contact_country, C.contact_2_country, C.extension, C.email, 1 AS user_type FROM company_users C
+                // WHERE C.company_id = '$company_id' AND C.is_active IN (1, 4) AND C.is_enabled = 1";
         $sql = "SELECT C.uuid, C.contact, C.contact_2, C.contact_type, C.contact_type_2, C.is_enabled, C.contact_country, C.contact_2_country, C.extension, C.email, 1 AS user_type FROM company_users C
-                WHERE C.company_id = '$company_id' AND C.is_active IN (1, 4) AND C.is_enabled = 1";
-
+        WHERE C.company_id = '$company_id' AND C.is_active IN (1, 4) AND C.is_enabled IN (1, 2)";
         $users = $this->db->customSelect($sql);
 	if (count($users) > 500) {
 		return false;
