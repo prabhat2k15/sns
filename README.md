@@ -25,13 +25,13 @@ The structure follows psr-4 standards
 ├── companydetails.json
 ├── composer.json
 ├── composer.lock
-├── config.copy.php
-├── config.php
 ├── index.php
 ├── logconf.php
+├── phpdoc.xml
 ├── phpunit.xml
 └── tests
-    └── ProcessCompanyTest.php
+    ├── ProcessCompanyTest.php
+    └── ValidationTest.php
 ```
 
 ### API

@@ -50,19 +50,18 @@ class ProcessCompany
      * Entry point for process company api
      *
      * @param array $key contains the company keys to fetch details
-     * @param array $ids contains the ids of the keys 
+     * @param array $ids contains the ids of the keys  
      * 
      * @return void
      */
     public function run($key, $ids=[])
     {
-        $company = $this->query->_pick_company($this->display_number);
+        // $company = $this->query->_pick_company($this->display_number);
 
-        // $this->initCompanyDetails();
-        if(!empty($company)){
+        // if(!empty($this->company_id)){
 
-            $this->company_id = $company[0]['company_id'];
-            $this->log->info('New Request For Company Id : '.$this->company_id);
+            // $this->company_id = $company[0]['company_id'];
+            // $this->log->info('New Request For Company Id : '.$this->company_id);
     
             
             switch($key){
@@ -113,15 +112,14 @@ class ProcessCompany
             $this->response['status'] = true;
             $this->response['message'] = 'Success';
 
-        }else{
-            $this->initCompanyDetails();
-            $this->log->info('Company not found for display no : '.$this->display_number);
-            $this->response['message'] = 'Company not found for display no : '.$this->display_number;
-        }
+        // }else{
+        //     $this->initCompanyDetails();
+        //     $this->log->info('Company not found for display no : '.$this->display_number);
+        //     $this->response['message'] = 'Company not found for display no : '.$this->display_number;
+        // }
 
        
         
-        // print_r($this->data);
         return $this->response;
 
     }
@@ -131,7 +129,7 @@ class ProcessCompany
      *
      * @return void
      */
-    private function initCompanyDetails()
+    public function initCompanyDetails()
     {
         $this->data = array(
             $this->display_number . ':details' => null,
@@ -327,7 +325,6 @@ class ProcessCompany
              if(!empty($ids)){
                 //filter details
                $filter_data = $this->filterData($department_settings, $ids);
-                // print_r($filter_data);
                 $department_settings = $filter_data;
             }
             $this->data[$hash] = $department_settings;
@@ -398,8 +395,6 @@ class ProcessCompany
     private function filterData($old, $new)
     {
         $new_ar=[];
-        // print_r($old);
-        // print_r($new);
 
         foreach($new as $key=>$ids){
             if(array_key_exists($key, $old)){
@@ -415,33 +410,10 @@ class ProcessCompany
                $new_ar[$key] = null; 
             }
         }
-        // foreach ($new_ar as $key => $value) {
-        //     $new_ar[$key] = json_encode($value);
-        // }
+
         return $new_ar;
 
-        // die;
-        // foreach($new as $key=>$ids){
-        //     if(!isset(json_decode($old[$key],1)[0])){
-        //         foreach($ids as $id){
-        //             if(isset(json_decode($old[$key],1)[$id])){
-        //                 $new_ar[$key][$id] = json_decode($old[$key],1)[$id];
-        //             }
-        //         }
-        //     }else{
-        //         foreach($ids as $id){
-        //             if(isset(json_decode($old[$key],1)[0][$id])) {
-        //                 $new_ar[$key][0][$id] = json_decode($old[$key],1)[0][$id];
-        //             }
-        //         }
-        //     }
-        //     foreach ($new_ar as $key => $value) {
-        //         $new_ar[$key] = json_encode($value);
-        //     }
-        // }
-        // // print_r($new_ar);
-        // die;
-        // return $new_ar;
+       
     }
    
 }
