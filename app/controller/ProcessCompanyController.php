@@ -99,7 +99,6 @@ class ProcessCompanyController
             $this->response['message'] = 'Company not found for display no : '.$this->display_number;
         }
         
-       
         /* Pushing data to SNS here  */
         try{
             $sns = new SNS;

@@ -399,18 +399,19 @@ class ProcessCompany
         foreach($new as $key=>$ids){
             if(array_key_exists($key, $old)){
                 if(empty($ids)){
-                    $new_ar[$key] = $old[$key];
+                    $new_ar[$key] = $old[$key];//is_array(json_decode($old[$key],1)) ? json_decode($old[$key],1): $old[$key];
                 }else{
                     foreach($ids as $id){
                         $new_ar[$key][$id] = isset(json_decode($old[$key],1)[$id]) ? json_decode($old[$key],1)[$id] : json_decode($old[$key],1)[0][$id];
                     }
+                    $new_ar[$key]=json_encode($new_ar[$key]);
+
                 }
                 
             }else{
                $new_ar[$key] = null; 
             }
         }
-
         return $new_ar;
 
        
@@ -433,3 +434,8 @@ class ProcessCompany
 //         echo  "Invalid Request";
 //     }
 // } 
+
+
+// {"919873832455:users":{"542c021d6745d657":{"is_enabled":"1","timing_manager":[{"day":127,"start_time":"03:30:00","end_time":"15:29:00"}]},"57c5dd207e859871":{"id":"57c5dd207e859871","name":"Sales","extension":null,"display_number":"919873832455","user_ids":["542c022219226915","542c021d6745d657"],"user_type":"2"}}}
+// {"919873832455:users":{"542c021d6745d657":"{\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919873832455\"}],\"timing_manager\":[{\"day\":127,\"start_time\":\"03:30:00\",\"end_time\":\"15:29:00\"}]}","542c022219226915":"{\"uuid\":\"542c022219226915\",\"contact\":\"8800203456\",\"contact_2\":\"\",\"contact_country\":\"+91\",\"contact_2_country\":\"\",\"contact_type\":\"mobile\",\"contact_type_2\":\"mobile\",\"extension\":\"10\",\"email\":\"ankit@myoperator.co\",\"user_type\":\"1\",\"is_enabled\":\"1\",\"linked_companies\":[{\"display_number\":\"919873832455\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"},{\"display_number\":\"\"}],\"timing_manager\":[{\"day\":62,\"start_time\":\"18:30:00\",\"end_time\":\"18:30:00\"}]}","57c5dd207e859871":"{\"id\":\"57c5dd207e859871\",\"name\":\"Sales\",\"extension\":null,\"display_number\":\"919873832455\",\"user_ids\":[\"542c022219226915\",\"542c021d6745d657\"],\"user_type\":\"2\"}","57c5dd207e909603":"{\"id\":\"57c5dd207e909603\",\"name\":\"General Enquiry\",\"extension\":null,\"display_number\":\"919873832455\",\"user_ids\":[\"542c022219226915\",\"542c021d6745d657\"],\"user_type\":\"2\"}","57c5dd207e9b1701":"{\"id\":\"57c5dd207e9b1701\",\"name\":\" Extension\",\"extension\":null,\"display_number\":\"919873832455\",\"user_ids\":[\"542c022219226915\",\"542c021d6745d657\"],\"user_type\":\"2\"}"},"919873832455:ivrs":{"time":"[{\"ivr_name\":\"Myoperator\",\"ivr_basis\":\"time\",\"ivr_id\":\"57c5dd20809e5147\",\"day\":127,\"start_time\":0,\"end_time\":86399}]"},"919873832455:ivr_settings":{"57c5dd20809e5147":"{\"moh\":\"false\",\"voicemail\":\"false\"}"},
+

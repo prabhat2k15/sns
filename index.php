@@ -53,7 +53,7 @@ header('Content-Type: application/json');
 // echo $keys; die;
 if(!empty($_REQUEST['display_number'])){
     
-    $keys = $_REQUEST['keys'] ?? json_encode([]);
+    $keys = !empty($_REQUEST['keys']) ? $_REQUEST['keys'] : json_encode([]);
     $keys=json_decode($keys, 1);
     $pc = new ProcessCompanyController;
     
