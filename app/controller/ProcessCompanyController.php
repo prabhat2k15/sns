@@ -93,10 +93,10 @@ class ProcessCompanyController
             
         }else{
             $this->process_company->initCompanyDetails();
-            $this->log->info('Company not found for display no : '.$this->display_number);
+            $this->log->info('Company not found for display no : '.$display_number);
             http_response_code(401);
             $this->response['status'] = false;
-            $this->response['message'] = 'Company not found for display no : '.$this->display_number;
+            $this->response['message'] = 'Company not found for display no : '.$display_number;
         }
         
         /* Pushing data to SNS here  */
@@ -105,7 +105,7 @@ class ProcessCompanyController
             $sns->publish($this->process_company->data);
         }catch(\Exception $e){
             http_response_code(404);
-            $this->log->error('SNS push failed for display no : '.$this->process_company->display_number .'|||'. $e->getMessage());
+            $this->log->error('SNS push failed for display no : '.$display_number .'|||'. $e->getMessage());
             $this->response['status'] = false;
             $this->response['message'] = 'SNS push failed';
 
