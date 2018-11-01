@@ -33,7 +33,6 @@ class Validation
     public function validateConfig()
     {
         if(!file_exists(__DIR__.'/../../.env')){// && !file_exists(__DIR__.'/../../logconf.php')){
-            http_response_code(404);
             $this->response['status']=false;
             $this->response['message']='Enviroment file not found';
             return $this->response;
@@ -61,7 +60,6 @@ class Validation
 
         }catch(\Exception $e){
             // $this->log->warn(date('Y-m-d H:i:s').'!!!!!! Configuration Not Found. Also check config keys !!!!!!!');
-            http_response_code(404);
             $this->response['status']=false;
             $this->response['message']='Configuration Not Found. Also check config keys.';           
         }

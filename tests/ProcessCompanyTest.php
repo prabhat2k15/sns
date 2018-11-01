@@ -12,7 +12,7 @@ class ProcessCompanyTest extends TestCase
     public function testForInvalidDisplayNumber()
     {
         $pcc = new ProcessCompanyController;
-        $display_number = '12313123';//wrong display no
+        $display_number = '12313123';//wrong display no 
         $response = $pcc->run($display_number);
 
         $data = $pcc->process_company->data;
@@ -29,7 +29,7 @@ class ProcessCompanyTest extends TestCase
     public function testForValidDisplayNumber()
     {
         $pcc = new ProcessCompanyController;
-        $display_number = '919873832455';//valid display no
+        $display_number = '911145823001';//'919873832455';//valid display no
         $response = $pcc->run($display_number);
         
         $data = $pcc->process_company->data;
@@ -46,7 +46,7 @@ class ProcessCompanyTest extends TestCase
     public function testForLoadingCompanyUsersDetails()
     {
         $pcc = new ProcessCompanyController;
-        $display_number = '919873832455';//valid display no
+        $display_number = '911145823001';//'919873832455';//valid display no
         $keys = [
             'company_users'=>[
                     '542c021d6745d657'=>['is_enabled','timing_manager'],

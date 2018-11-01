@@ -7,13 +7,13 @@ header('Content-Type: application/json');
 // echo '<pre>';
 // $keys = [
 //         'companies'=>[
-//             'destination'=>[],
-//             'destination_2'=>[],
-//             'xyz'=>[],
+//             'destination'=>array(),
+//             'destination_2'=>array(),
+//             'xyz'=>array(),
 //         ],
 //         'company_settings'=>[
-//             'account_type'=>[],
-//             'connection_method'=>[],
+//             'account_type'=>array(),
+//             'connection_method'=>array(),
 //         ],
 //         'ivrs'=>[
 //             'time'=>[
@@ -53,14 +53,13 @@ header('Content-Type: application/json');
 // echo $keys; die;
 if(!empty($_REQUEST['display_number'])){
     
-    $keys = !empty($_REQUEST['keys']) ? $_REQUEST['keys'] : json_encode([]);
+    $keys = !empty($_REQUEST['keys']) ? $_REQUEST['keys'] : json_encode(array());
     $keys=json_decode($keys, 1);
     $pc = new ProcessCompanyController;
     
     echo json_encode($pc->run($_REQUEST['display_number'], $keys));
 
 }else{
-    http_response_code(401);
     echo json_encode(array('status'=>false, 'message'=>'Invalid Request'));
 }
 

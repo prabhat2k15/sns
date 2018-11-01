@@ -11,6 +11,7 @@ namespace Service;
 
 use Aws\Sns\SnsClient;
 use Dotenv\Dotenv;
+use Aws\Common\Credentials\Credentials;
 
 class SNS
 {
@@ -18,15 +19,24 @@ class SNS
 
     public function __construct()
     {
-        $this->sns = new SnsClient([
-            'credentials' => [
-                    'key'    => getenv('SNS_KEY'),
-                    'secret' => getenv('SNS_SECRET'),
-                ],
+
+        $credentials = new Credentials( getenv('SNS_KEY'),  getenv('SNS_SECRET'));
+
+        $this->sns = SnsClient::factory(array(
+            'credentials' => $credentials,
             'version' => getenv('SNS_VERSION'),
             'region'  => getenv('SNS_REGION'),
             'scheme' => getenv('SNS_SCHEME')
-        ]);
+            )
+        );
+        //     'credentials' => [
+        //             'key'    => getenv('SNS_KEY'),
+        //             'secret' => getenv('SNS_SECRET'),
+        //         ],
+        //     'version' => 'latest',getenv('SNS_VERSION'),
+        //     'region'  => 'us-east-2',//getenv('SNS_REGION'),
+        //     'scheme' => 'http' //getenv('SNS_SCHEME')
+        // ]);
 
     }
 
