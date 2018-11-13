@@ -140,7 +140,7 @@ class ProcessCompany
             $this->display_number . ':nodes' => null,
             $this->display_number . ':ivr_settings' => null,
             $this->display_number . ':settings' => null,
-            $this->display_number . ':dept' =>null
+            $this->display_number . ':dept_settings' =>null
         );
     }
 
