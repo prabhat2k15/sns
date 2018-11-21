@@ -395,7 +395,6 @@ class ProcessCompany
     private function filterData($old, $new)
     {
         $new_ar=[];
-
         foreach($new as $key=>$ids){
             if(array_key_exists($key, $old)){
                 if(empty($ids)){
